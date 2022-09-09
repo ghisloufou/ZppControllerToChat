@@ -2,6 +2,12 @@ import XInput
 from pynput.keyboard import Key, Controller
 import time
 
+print("ZppControllerToChat")
+
+if not XInput.get_connected()[0]:
+    print("Manette non détectée :-(")
+    quit()
+
 class MyHandler(XInput.EventHandler):
     def __init__(self, *controllers, filter=...):
         super().__init__(*controllers, filter=filter)
@@ -53,6 +59,7 @@ class MyHandler(XInput.EventHandler):
             else:
                 output = word
 
+            print(output)
             for c in output:
                 self.press_key(c)
 
@@ -68,7 +75,7 @@ filter = XInput.BUTTON_DPAD_UP + XInput.BUTTON_DPAD_DOWN + XInput.BUTTON_DPAD_RI
 my_handler = MyHandler(0)
 my_handler.set_filter(filter)
 
-print("Lezgo")
+print("Lezgo, pour sortir du programme, appuyez sur votre stick gauche.")
 
 my_gamepad_thread = XInput.GamepadThread(my_handler)
 
