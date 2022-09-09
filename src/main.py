@@ -1,12 +1,16 @@
 import XInput
 from pynput.keyboard import Key, Controller
 import time
+from random import choice
 
 print("ZppControllerToChat")
 
 if not XInput.get_connected()[0]:
     print("Manette non détectée :-(")
     quit()
+
+def randomizeCharCase(inputStr):
+    return ''.join(choice((str.upper, str.lower))(char) for char in inputStr)
 
 class MyHandler(XInput.EventHandler):
     def __init__(self, *controllers, filter=...):
@@ -28,9 +32,9 @@ class MyHandler(XInput.EventHandler):
                 case XInput.BUTTON_DPAD_RIGHT:
                     self.type_word("droite")
                 case XInput.BUTTON_A:
-                    self.type_word("a")
+                    self.type_word("a", True)
                 case XInput.BUTTON_B:
-                    self.type_word("b")
+                    self.type_word("b", True)
                 case XInput.BUTTON_START:
                     self.type_word("start")
                 case XInput.BUTTON_LEFT_THUMB:
@@ -47,17 +51,17 @@ class MyHandler(XInput.EventHandler):
     def process_connection_event(self, event):
         return
 
-    def type_word(self, word):
+    def type_word(self, word: str, isAOrB: bool = False):
         now = time.time()
 
         if (now - self.last_keystroke) > 1.5:
             self.last_keystroke = now
 
             output = ""
-            if self.upper:
-                output = word.upper()
+            if isAOrB:
+                output = word.upper() if self.upper else word
             else:
-                output = word
+                output = randomizeCharCase(word)
 
             print(output)
             for c in output:
