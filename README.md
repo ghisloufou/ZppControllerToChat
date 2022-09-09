@@ -9,6 +9,6 @@ Ch'ui un dev C# et c'est littéralement mon premier programme en python, donc c'
 # Comment l'exécuter ?
 Il faut avoir python sur ton PC et exécuter le fichier main.py comme ça:
 
-    py .\main.py
+    py .\src\main.py
 
 Je regarde pour en faire un truc facile à exécuter.
