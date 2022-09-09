@@ -9,11 +9,11 @@ Et faites des dons pour la planète ! Go vous renseigner sur https://zevent.fr !
 Ch'ui un dev C# et c'est littéralement mon premier programme en python, donc c'est normal si vous voyez des trucs pas ouf :-)
 
 # Comment l'exécuter ?
-Il faut avoir python sur ton PC et exécuter le fichier main.py comme ça:
+Go récupérer l'exécutable ici : https://github.com/rh0r/ZppControllerToChat/releases
+
+Si vous préférez exécuter le code il faut avoir python sur ton PC et exécuter le fichier main.py comme ça:
 
     py .\src\main.py
-
-Je regarde pour en faire un truc facile à exécuter.
 
 # Et pour faire un exécutable ?
 Je fais ça avec pyinstaller:
